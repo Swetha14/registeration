@@ -1,0 +1,127 @@
+<html>
+ <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up Form</title>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+<style>
+input
+{
+
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 10px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 20%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+fieldset {
+  margin-bottom: 30px;
+  border: none;
+}
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+button {
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 20%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1)
+}
+</style>
+	</head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#chkShowPassword").bind("click", function () {
+
+            var txtPassword = $("#txtPassword");
+
+            if ($(this).is(":checked")) {
+
+                txtPassword.after('<input onchange = "PasswordChanged(this);" id = "txt_' + txtPassword.attr("id") + '" type = "text" value = "' + txtPassword.val() + '" />');
+
+                txtPassword.hide();
+
+            } else {
+
+                txtPassword.val(txtPassword.next().val());
+
+                txtPassword.next().remove();
+
+                txtPassword.show();
+
+            }
+
+        });
+
+    });
+
+    function PasswordChanged(txt) {
+
+        $(txt).prev().val($(txt).val());
+
+    }
+
+</script>
+ <body>
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+      
+<h1>Sign Up</h1>
+        
+<fieldset>
+<label for="name">Name:</label><br>
+<input type="text" class = "form-control" id="name" name="name"><br>
+<label for = "rno">Roll number:</label><br>
+<input type="text" class = "form-control" id="rno" name="rno"><br>
+<label for="dept">Department:</label><br>
+<input type="text" class = "form-control" id="dept" name="dept"><br>
+<label for="year">Year of Study:</label><br>
+<input type="text" class = "form-control" id="year" name="year"><br>
+<label for="email">Email:</label><br>
+<input type="text" id="email" class = "form-control" name="email"><br>
+<label for="name">Password:</label><br>
+<input type="password" id="txtPassword" class = "form-control"> 
+<label for="chkShowPassword"><input type="checkbox" id="chkShowPassword"   >
+show password</label><br><br>
+<label for="name">Profile Picture:</label><br>
+<input type="file" id="file" class = "form-control" name="file"><br><br>
+<img src="captcha.php" /><br><br><input type = "text" class = "form-control" name="captcha"><br>
+</feildset>
+<br>
+<center><button type="submit" class = "form-control">Sign Up</button></center>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
+
+<?php
+
+?>
+
